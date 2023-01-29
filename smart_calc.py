@@ -43,6 +43,7 @@ def operation():
 win=Tk()
 win.geometry('500x400')
 win.configure(bg='lightskyblue')
+win.wm_title("Smart calculator")
 
 l1=Label(win, text="Smart Calculator", width=20, padx=3)
 l1.place(x=190, y=10)
