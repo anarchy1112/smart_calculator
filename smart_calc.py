@@ -4,8 +4,8 @@ import re
 
 mul_text=['multiply', '*', 'x', 'multiplication']
 div_text=['division', '/', 'divide','div']
-add_text=['add', '+', 'addition', 'sum']
-sub_text=['subtract', '-', 'minus', 'subtraction', 'difference']
+add_text=['add', '+', 'addition', 'sum', 'plus']
+sub_text=['subtract', '-', 'minus', 'subtraction', 'difference', 'minus']
 
 
 def number_extract():
@@ -18,21 +18,20 @@ def operation():
     numbers = number_extract()
     if any(a in problem.get().lower() for a in mul_text):
         for i in numbers:
-            muldiv*=int(i)
+            muldiv*=float(i)
         lb.delete(0, END)
-        lb.insert(END, addsub)
+        lb.insert(END, muldiv)
     elif any(a in problem.get().lower() for a in div_text):
-        for i in numbers:
-            addsub=int(numbers[0])-int(numbers[1])
+        muldiv=float(numbers[0])/float(numbers[1])
         lb.delete(0, END)
-        lb.insert(END, addsub)
+        lb.insert(END, muldiv)
     elif any(a in problem.get().lower() for a in add_text):
         for i in numbers:
-            addsub+=int(i)
+            addsub+=float(i)
         lb.delete(0,END)
         lb.insert(END, addsub)
     elif any(a in problem.get().lower() for a in sub_text):
-        addsub=int(numbers[0])-int(numbers[1])
+        addsub=float(numbers[0])-float(numbers[1])
         lb.delete(0, END)
         lb.insert(END, addsub)
     else:
